@@ -1,0 +1,11 @@
+from maven:<tag-name> As build
+workdir /app
+copy pom.xml .
+copy src /src/
+RUN mvn clean install -Dskoptest=true
+
+
+from jdk:17
+workdir /app
+COPY --from=build /app/target/*.jar app.jar
+EntryPoint ["java" , "-jar" , "app.jar"]
