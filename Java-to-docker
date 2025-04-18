@@ -2,7 +2,7 @@ from maven:<tag-name> As build
 workdir /app
 copy pom.xml .
 copy src /src/
-RUN mvn clean install -Dskoptest=true
+RUN mvn clean install -Dskiptest=true
 
 
 from jdk:17
